@@ -1,0 +1,117 @@
+main(model) ::=
+<<
+package <model.packageName>;
+
+import org.joda.time.DateTime;
+import net.matthoyt.database.wrapper.ResultSetReader;
+import net.matthoyt.database.wrapper.PrepareStatementHelper;
+
+import java.math.BigDecimal;
+import java.sql.*;
+
+/////////////////////////////////////
+// File is generated do not modify //
+/////////////////////////////////////
+
+public class <model.name>
+{
+    <model.columns:field(); separator="\n">
+
+    <model.columns:beanBs(); separator="\n\n">
+
+    public static <model.name> create(ResultSet reader, <model.name> model) throws SQLException
+    {
+        <model.columns:read()>
+        return model;
+    }
+
+<if(model.table)>
+    <model:crud()>
+<endif>
+}
+>>
+
+crud(model) ::=
+<<
+<model:insertCommand()>
+
+<model:updateCommand()>
+>>
+
+field(column) ::=
+<<
+private <column.dataType> <column.fieldName>;
+>>
+
+beanBs(column) ::=
+<<
+public <column.dataType> get<column.name>()
+{
+    return <column.fieldName>;
+}
+
+public void set<column.name>(<column.dataType> value)
+{
+    <column.fieldName> = value;
+}
+>>
+
+read(column) ::=
+<<
+<if(column.castType)>
+model.set<column.name>((<column.dataType>) ResultSetReader.<column.readFunction>(reader, <column.offset>));
+<else>
+model.set<column.name>(ResultSetReader.<column.readFunction>(reader, <column.offset>));
+<endif>
+>>
+
+insertCommand(model) ::=
+<<
+public static PreparedStatement insertStatement(Connection conn, <model.name> model) throws SQLException
+{
+    PreparedStatement statement = conn.prepareStatement("INSERT INTO <model.tableName>(<model.insertColumns:insertCommandColumnRaw(); separator=",">) VALUES (<model.insertColumns:insertCommandColumnName(); separator=",">)");
+    <model.insertColumns:commandParameter(); separator="\n">
+    return statement;
+}
+>>
+
+insertCommandColumnRaw(column) ::=
+<<
+<column.rawName>
+>>
+
+insertCommandColumnName(column) ::=
+<<
+?
+>>
+
+commandParameter(column) ::=
+<<
+PrepareStatementHelper.setObject(statement, <column.insertOffset>, model.get<column.name>(), <column.sqlType>);
+>>
+
+commandParameterUpdate(column) ::=
+<<
+PrepareStatementHelper.setObject(statement, <column.updateOffset>, model.get<column.name>(), <column.sqlType>);
+>>
+
+updateCommand(model) ::=
+<<
+public static PreparedStatement updateStatement(Connection conn, <model.name> model) throws SQLException
+{
+    PreparedStatement statement = conn.prepareStatement("UPDATE <model.tableName> SET <model.updateColumns:updateCommandSet();separator=", "> WHERE <model.primaryKey:updateWhereClause()>");
+    <model.updateColumns:commandParameterUpdate(); separator="\n">
+    <model.primaryKey:commandParameterUpdate()>
+    return statement;
+}
+>>
+
+updateCommandSet(column) ::=
+<<
+<column.rawName> = ?
+>>
+
+updateWhereClause(column) ::=
+<<
+<column.rawName> = ?;
+>>

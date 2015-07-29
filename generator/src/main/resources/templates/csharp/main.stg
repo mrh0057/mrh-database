@@ -1,0 +1,212 @@
+main(model) ::=
+<<
+using System;
+using System.Collections.Generic;
+using System.Data.Common;
+using System.Data;
+using Mrh.Database.Utils;
+
+namespace <model.namespace>
+{
+
+    //////////////////////////////////////
+    // File is generated do not modify  //
+    //////////////////////////////////////
+    public class <model.name>
+    {
+        <model.columns:field()>
+
+        public static <model.name> Create\<T>(DbDataReader reader, T model) where T:<model.name>
+        {
+            <model.columns:read()>
+            return model;
+        }
+
+    <if(model.table)>
+        <model:crud()>
+    <endif>
+    }
+}
+>>
+
+field(column) ::=
+<<
+public <column.dataType> <column.name> { get; set; }
+
+>>
+
+read(column) ::=
+<<
+<if(column.castType)>
+model.<column.name> = (<column.dataType>) reader.<column.readFunction>(<column.offset>);
+<else>
+model.<column.name> = reader.<column.readFunction>(<column.offset>);
+<endif>
+>>
+
+crud(model) ::=
+<<
+<model:createDataTable()>
+
+<model:createDataTableInsertRow()>
+
+<model:createDataTableUpdateRow()>
+
+<model:insertCommand()>
+
+<model:updateCommand()>
+>>
+
+createDataTable(model) ::=
+<<
+/// \<summary>
+///     Creates a DataTable representing the model.  Useful for doing bulk inserts into SQL Server.
+/// \</summary>
+/// \<returns>The defined data table.\</returns>
+public static DataTable CreateDataTable() {
+    DataTable table = new DataTable("<model.tableName>");
+    List\<DataColumn> primaryKeys = new List\<DataColumn>(1);
+    DataColumn column;
+
+    <model.columns:createDataTableColumn()>
+    table.PrimaryKey = primaryKeys.ToArray();
+    return table;
+}
+>>
+
+createDataTableColumn(column) ::=
+<<
+column = new DataColumn {
+    DataType = typeof(<column.rawDataType>),
+    ColumnName = "<column.rawName>",
+    ReadOnly = <column.isReadOnly>,
+    AutoIncrement = <column.isAutoIncrement>,
+};
+table.Columns.Add(column);
+<if(column.isPrimaryKey)>
+primaryKeys.Add(column);
+<endif>
+
+>>
+
+createDataTableInsertRow(model) ::=
+<<
+public static void Insert(DataTable table, <model.name> model)
+{
+    var row = table.NewRow();
+    table.Rows.Add(row);
+    <model.columns:createDataTableRowInsert()>
+}
+>>
+
+createDataTableUpdateRow(model) ::=
+<<
+public static void Update(DataTable table, <model.name> model)
+{
+    var row = table.NewRow();
+    table.Rows.Add(row);
+    <model.columns:createDataTableRowUpdate()>
+}
+>>
+
+createDataTableRowInsert(column) ::=
+<<
+<if(!column.isAutoIncrement && !column.isReadOnly)>
+<column:tableRowSet()>
+<endif>
+>>
+
+createDataTableRowUpdate(column) ::=
+<<
+<if(column.isPrimaryKey || !column.isAutoIncrement && !column.isReadOnly)>
+<column:tableRowSet()>
+<endif>
+>>
+
+tableRowSet(column) ::=
+<<
+<if(column.isNullable)>
+if (model.<column.name> == null)
+{
+    row["<column.rawName>"] = DBNull.Value;
+} else
+{
+    <column:tableRowSetType()>
+}
+<else>
+<column:tableRowSetType()>
+<endif>
+>>
+
+tableRowSetType(column) ::=
+<<
+<if(column.castType)>
+row["<column.rawName>"] = (<column.rawDataType>) model.<column.name>;
+<else>
+row["<column.rawName>"] = model.<column.name>;
+<endif>
+>>
+
+insertCommand(model) ::=
+<<
+public static DbCommand InsertCommand(DbCommand command, <model.name> model)
+{
+    command.CommandType = CommandType.Text;
+    command.CommandText = @"
+        INSERT INTO <model.tableName>
+        (
+        <model.insertColumns:insertCommandColumnRaw(); separator=",\n">
+        )
+        VALUES
+        (
+        <model.insertColumns:insertCommandColumnName(); separator=",\n">
+        )
+    ";
+    <model.insertColumns:commandParameter(); separator="\n">
+    return command;
+}
+>>
+
+insertCommandColumnRaw(column) ::=
+<<
+<column.rawName>
+>>
+
+insertCommandColumnName(column) ::=
+<<
+@<column.name>
+>>
+
+commandParameter(column) ::=
+<<
+command.AddParameterWithNullable("@<column.name>", model.<column.name>);
+>>
+
+updateCommand(model) ::=
+<<
+public static DbCommand UpdateCommand(DbCommand command, <model.name> model)
+{
+    command.CommandType = CommandType.Text;
+    command.CommandText = @"
+        UPDATE
+            <model.tableName>
+        SET
+            <model.updateColumns:updateCommandSet(); separator=",\n">
+        WHERE
+            <model.primaryKey:updateWhereClause()>
+    ";
+    <model.primaryKey:commandParameter()>
+    <model.updateColumns:commandParameter(); separator="\n">
+    return command;
+}
+>>
+
+updateCommandSet(column) ::=
+<<
+<column.rawName> = @<column.name>
+>>
+
+updateWhereClause(column) ::=
+<<
+<column.rawName> = @<column.name>;
+>>

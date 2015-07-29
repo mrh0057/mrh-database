@@ -1,0 +1,15 @@
+module hello.world
+
+name Something
+
+database sitCrm
+
+table MyTable.Something
+
+column DbColumn2->NewName2
+column DbColumn1->NewName
+
+enum MyColumn->my.something
+enum MyColumn2->my.somethingElse
+
+skip MyColumn3

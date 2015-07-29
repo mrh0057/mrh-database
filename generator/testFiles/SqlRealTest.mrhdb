@@ -1,0 +1,12 @@
+module hello.world
+
+name Something
+
+database Postgres
+
+<<!
+SELECT
+	*
+FROM
+	table1
+!>>

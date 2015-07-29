@@ -1,0 +1,14 @@
+module hello.world
+
+name Something
+
+database Postgres
+
+<<!
+SELECT
+	*
+FROM
+	table1
+!>>
+
+enum small_int_type->hello.world.NewEnum

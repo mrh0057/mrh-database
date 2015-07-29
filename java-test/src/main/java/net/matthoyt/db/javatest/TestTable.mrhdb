@@ -1,0 +1,9 @@
+module net.matthoyt.db.javatest
+
+name TestTable
+
+database Postgres
+
+table table1
+
+primaryKey id
