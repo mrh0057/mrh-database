@@ -1,8 +1,8 @@
-module hello.world
+$module hello.world.database;
 
-name Something
+$name Something;
 
-database sitCrm
+$database sitCrm;
 
 <<!
 SELECT
@@ -11,8 +11,8 @@ FROM
 myDb
 !>>
 
-enum MyColumn->my.something
-enum MyColumn2->my.somethingElse
+$enum MyColumn->my.something;
+$enum MyColumn2->my.somethingElse;
 
-column DbColumn2->NewName2
-column DbColumn1->NewName
+$column DbColumn2->NewName2;
+$column DbColumn1->NewName;

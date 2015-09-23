@@ -1,15 +1,15 @@
-module hello.world
+$module hello.world
 
-name Something
+$name Something
 
-database sitCrm
+$database sitCrm
 
-table MyTable.Something
+$table MyTable.Something
 
-column DbColumn2->NewName2
-column DbColumn1->NewName
+$column DbColumn2->NewName2
+$column DbColumn1->NewName
 
-enum MyColumn->my.something
-enum MyColumn2->my.somethingElse
+$enum MyColumn->my.something
+$enum MyColumn2->my.somethingElse
 
-skip MyColumn3
+$skip MyColumn3

@@ -1,8 +1,8 @@
-module hello.world
+$module hello.world
 
-name Something
+$name Something
 
-database Postgres
+$database Postgres
 
 <<!
 SELECT

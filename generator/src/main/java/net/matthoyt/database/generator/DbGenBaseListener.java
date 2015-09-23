@@ -1,8 +1,7 @@
-// Generated from C:/Users/mrh0057/OneDrive/GitProjects/mrh-database/generator/src/main/java/net/matthoyt/database/generator\DbGen.g4 by ANTLR 4.5
+// Generated from D:/MyProjects/mrh-database/generator/src/main/java/net/matthoyt/database/generator\DbGen.g4 by ANTLR 4.5.1
 package net.matthoyt.database.generator;
 
 import org.antlr.v4.runtime.ParserRuleContext;
-import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
@@ -17,168 +16,168 @@ public class DbGenBaseListener implements DbGenListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterProg(@NotNull DbGenParser.ProgContext ctx) { }
+	@Override public void enterProg(DbGenParser.ProgContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitProg(@NotNull DbGenParser.ProgContext ctx) { }
+	@Override public void exitProg(DbGenParser.ProgContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterModule(@NotNull DbGenParser.ModuleContext ctx) { }
+	@Override public void enterModule(DbGenParser.ModuleContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitModule(@NotNull DbGenParser.ModuleContext ctx) { }
+	@Override public void exitModule(DbGenParser.ModuleContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTable(@NotNull DbGenParser.TableContext ctx) { }
+	@Override public void enterTable(DbGenParser.TableContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTable(@NotNull DbGenParser.TableContext ctx) { }
+	@Override public void exitTable(DbGenParser.TableContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterName(@NotNull DbGenParser.NameContext ctx) { }
+	@Override public void enterName(DbGenParser.NameContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitName(@NotNull DbGenParser.NameContext ctx) { }
+	@Override public void exitName(DbGenParser.NameContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterDatabase(@NotNull DbGenParser.DatabaseContext ctx) { }
+	@Override public void enterDatabase(DbGenParser.DatabaseContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitDatabase(@NotNull DbGenParser.DatabaseContext ctx) { }
+	@Override public void exitDatabase(DbGenParser.DatabaseContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterColumn(@NotNull DbGenParser.ColumnContext ctx) { }
+	@Override public void enterColumn(DbGenParser.ColumnContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitColumn(@NotNull DbGenParser.ColumnContext ctx) { }
+	@Override public void exitColumn(DbGenParser.ColumnContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSkipColumn(@NotNull DbGenParser.SkipColumnContext ctx) { }
+	@Override public void enterSkipColumn(DbGenParser.SkipColumnContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSkipColumn(@NotNull DbGenParser.SkipColumnContext ctx) { }
+	@Override public void exitSkipColumn(DbGenParser.SkipColumnContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterColumnEnum(@NotNull DbGenParser.ColumnEnumContext ctx) { }
+	@Override public void enterColumnEnum(DbGenParser.ColumnEnumContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitColumnEnum(@NotNull DbGenParser.ColumnEnumContext ctx) { }
+	@Override public void exitColumnEnum(DbGenParser.ColumnEnumContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPrimaryKey(@NotNull DbGenParser.PrimaryKeyContext ctx) { }
+	@Override public void enterPrimaryKey(DbGenParser.PrimaryKeyContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPrimaryKey(@NotNull DbGenParser.PrimaryKeyContext ctx) { }
+	@Override public void exitPrimaryKey(DbGenParser.PrimaryKeyContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAdditionalOptions(@NotNull DbGenParser.AdditionalOptionsContext ctx) { }
+	@Override public void enterAdditionalOptions(DbGenParser.AdditionalOptionsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAdditionalOptions(@NotNull DbGenParser.AdditionalOptionsContext ctx) { }
+	@Override public void exitAdditionalOptions(DbGenParser.AdditionalOptionsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterQualifiedName(@NotNull DbGenParser.QualifiedNameContext ctx) { }
+	@Override public void enterQualifiedName(DbGenParser.QualifiedNameContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitQualifiedName(@NotNull DbGenParser.QualifiedNameContext ctx) { }
+	@Override public void exitQualifiedName(DbGenParser.QualifiedNameContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSqlBlock(@NotNull DbGenParser.SqlBlockContext ctx) { }
+	@Override public void enterSqlBlock(DbGenParser.SqlBlockContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSqlBlock(@NotNull DbGenParser.SqlBlockContext ctx) { }
+	@Override public void exitSqlBlock(DbGenParser.SqlBlockContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterEveryRule(@NotNull ParserRuleContext ctx) { }
+	@Override public void enterEveryRule(ParserRuleContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitEveryRule(@NotNull ParserRuleContext ctx) { }
+	@Override public void exitEveryRule(ParserRuleContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void visitTerminal(@NotNull TerminalNode node) { }
+	@Override public void visitTerminal(TerminalNode node) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void visitErrorNode(@NotNull ErrorNode node) { }
+	@Override public void visitErrorNode(ErrorNode node) { }
 }

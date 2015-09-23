@@ -14,40 +14,40 @@ prog:
     )
 ;
 
-module:
-    'module' qualifiedName
-    ;
-
-table:
-    'table' qualifiedName
-    ;
-
 Identifier:
     [a-zA-Z0-9_]+
 ;
 
+module:
+    '$module' qualifiedName END
+    ;
+
+table:
+    '$table' qualifiedName END
+    ;
+
 name:
-    'name' Identifier
+    '$name' Identifier END
 ;
 
 database:
-    'database' Identifier
+    '$database' Identifier END
 ;
 
 column:
-    'column' Identifier '->' Identifier
+    '$column' Identifier '->' Identifier END
 ;
 
 skipColumn:
-    'skip' Identifier
+    '$skip' Identifier END
 ;
 
 columnEnum:
-    'enum' Identifier '->' qualifiedName
+    '$enum' Identifier '->' qualifiedName END
 ;
 
 primaryKey:
-    'primaryKey' Identifier
+    '$primaryKey' Identifier END
 ;
 
 additionalOptions
@@ -95,3 +95,5 @@ SQL_START : '<<!';
 SQL_END : '!>>';
 
 ARROW: '->';
+
+END: ';';
