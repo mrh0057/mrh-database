@@ -144,6 +144,7 @@ namespace hello.world
                 small_int_type,
                 decimal_type
                 )
+                OUTPUT INSERTED.Id
                 VALUES
                 (
                 @Id,

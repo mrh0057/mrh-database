@@ -1,9 +1,9 @@
-$module net.matthoyt.db.javatest
+$module net.matthoyt.db.javatest;
 
-$name TestTable
+$name TestTable;
 
-$database Postgres
+$database Postgres;
 
-$table table1
+$table table1;
 
-$primaryKey id
+$primaryKey id;

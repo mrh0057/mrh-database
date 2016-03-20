@@ -1,9 +1,9 @@
-module hello.world
+$module hello.world;
 
-name Something
+$name Something;
 
-database Postgres
+$database Postgres;
 
-table table1
+$table table1;
 
-primaryKey id
+$primaryKey id;

@@ -157,6 +157,7 @@ public static DbCommand InsertCommand(DbCommand command, <model.name> model)
         (
         <model.insertColumns:insertCommandColumnRaw(); separator=",\n">
         )
+        OUTPUT INSERTED.<model.primaryKey.name>
         VALUES
         (
         <model.insertColumns:insertCommandColumnName(); separator=",\n">

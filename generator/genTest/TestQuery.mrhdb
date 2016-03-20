@@ -1,8 +1,8 @@
-module hello.world
+$module hello.world;
 
-name Something
+$name Something;
 
-database Postgres
+$database Postgres;
 
 <<!
 SELECT
@@ -11,4 +11,4 @@ FROM
 	table1
 !>>
 
-enum small_int_type->hello.world.NewEnum
+$enum small_int_type->hello.world.NewEnum;
